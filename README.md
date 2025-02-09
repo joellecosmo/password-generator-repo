@@ -35,7 +35,7 @@ This is a simple **Java-based Password Generator** that provides users with the 
 ```sh
 git clone https://github.com/yourusername/PasswordGenerator.git
 cd PasswordGenerator
-
+```
 
 2. Compile the Java files
 ```sh
