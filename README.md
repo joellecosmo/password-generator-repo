@@ -46,5 +46,5 @@ java src.App
 
 
 ## **Demo**
-![Demo](Screen Recording 2025-02-09 204704.gif)
+<img src="Screen%20Recording%202025-02-09%20204704.gif" width="500">
 
