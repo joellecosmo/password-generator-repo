@@ -42,7 +42,7 @@ cd PasswordGenerator
 javac src/*.java
 
 java src.App
-
+```
 
 
 ## **Demo**
