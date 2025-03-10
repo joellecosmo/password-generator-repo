@@ -9,21 +9,27 @@ public class PasswordGenerator {
     public PasswordGenerator(){
         random =new Random();
     }
-    public String generatePassword(int length, boolean includeUppercase, boolean includeLowercase, boolean includeNumbers, boolean includeSymbols){
-        StringBuilder passwordBuilder = new StringBuilder();
-        String validCharacters = "";
-        if (includeUppercase){ validCharacters+=UPPERCASE_CHARACTERS; }
-        if (includeLowercase){ validCharacters+=LOWERCASE_CHARACTERS; }
-        if (includeNumbers){ validCharacters += NUMBERS;}
-        if (includeSymbols) {validCharacters += SPECIAL_SYMBOLS; }
-        for (int i=0; i<length ; i++) {
-            int randomIndex = random.nextInt(validCharacters.length());
-            char randomChar = validCharacters.charAt(randomIndex);
-            passwordBuilder.append(randomChar);
+    private String createCharacterPool(boolean includeUppercase, boolean includeLowercase, boolean includeNumbers, boolean includeSymbols){
+        StringBuilder pool = new StringBuilder();
+        if(includeUppercase) pool.append(UPPERCASE_CHARACTERS);
+        if(includeLowercase)pool.append(LOWERCASE_CHARACTERS);
+        if(includeNumbers) pool.append(NUMBERS);
+        if (includeSymbols) pool.append(SPECIAL_SYMBOLS);
+
+        return pool.toString();
+         }
+
+        public String generatePassword(int length, boolean includeUppercase, boolean includeLowercase, boolean includeNumbers, boolean includeSymbols){
+        String characterPool = createCharacterPool(includeUppercase,includeLowercase,includeNumbers,includeSymbols);
+        if(characterPool.isEmpty()) throw new IllegalArgumentException("Select at least one character type");
+        StringBuilder password = new StringBuilder();
+        Random random = new Random();
+
+        random.ints(length, 0, characterPool.length())
+                    .forEach(i -> password.append(characterPool.charAt(i)));
+
+            return password.toString();
 
         }
-        return passwordBuilder.toString();
-        }
-
     }
 
